@@ -8,10 +8,16 @@
 :set nu
 :set autochdir
 :set termencoding=utf-8
-:set updatetime=400
+:set updatetime=100
 :set encoding=utf-8
 :set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-:set tags=/home/tangruifeng/linux-4.9.238/tags
+
+" ctags config
+set tags=./.tags;,.tags
+
+
+" YCM config
+let g:ycm_global_ycm_extra_conf ='/home/tangruifeng/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
@@ -37,8 +43,16 @@ Plug '~/my-prototype-plugin'
 
 Plug 'jiangmiao/auto-pairs'
 
-" gitgutter
-Plug 'airblade/vim-gitgutter'
+" YCM can generate code automatically
+Plug 'ycm-core/YouCompleteMe'
+
+" git diff
+if has('nvim') || has('patch-8.0.902')
+	Plug 'mhinz/vim-signify'
+else
+	Plug 'mhinz/vim-signify', { 'branch': 'legacy'  }
+endif
+
 
 " Initialize plugin system
 call plug#end()
