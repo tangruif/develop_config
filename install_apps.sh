@@ -7,4 +7,4 @@ sudo apt-get install openssh-server \
 	vim git vsftpd \
 	cmake binutils gcc gdb \
 	fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison \
-	qemu tmux  htop w3m
+	qemu tmux  htop w3m curl
