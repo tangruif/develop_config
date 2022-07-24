@@ -1,56 +1,25 @@
+" normal development
 ":set tabstop=4
 ":set softtabstop=4
-:set tabstop=8 
-:set softtabstop=8 
-:set shiftwidth=8 
+":set expandtab
+
+" linux kernel style
+:set tabstop=8
+:set softtabstop=8
+:set shiftwidth=8
 :set noexpandtab
-:set autoindent
+
 :set nu
-:set autochdir
 :set termencoding=utf-8
 :set updatetime=100
 :set encoding=utf-8
 :set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set runtimepath^=~/.vim/plugged/ctrlp.vim
 
 " enable color in xshell
 set t_Co=256
 let g:airline_powerline_fonts = 1
 
 let g:airline_theme = 'cool'
-
-" ctags config
-:set tags=./.tags;,.tags
-" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
-
-" 所生成的数据文件的名称 "
-let g:gutentags_ctags_tagfile = '.tags'
-
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-" 检测 ~/.cache/tags 不存在就新建 "
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-   endif
-
-" 配置 ctags 的参数 "
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-
-" YCM config
-let g:ycm_global_ycm_extra_conf ='/home/tangruifeng/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
-set completeopt=menu,menuone
-
 
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
@@ -75,12 +44,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug '~/my-prototype-plugin'
 
 Plug 'jiangmiao/auto-pairs'
-
-" auto gen tags
-Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
-
-" YCM can generate code automatically
-Plug 'ycm-core/YouCompleteMe'
 
 " vim airline
 Plug 'vim-airline/vim-airline'
